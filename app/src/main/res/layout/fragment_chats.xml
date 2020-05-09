@@ -25,6 +25,7 @@
         android:layout_margin="@dimen/vertical_large_margin"
         android:backgroundTint="@color/primary"
         android:clickable="true"
+        android:focusable="true"
 
         />
 

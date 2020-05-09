@@ -24,6 +24,8 @@
         <item name="material_drawer_header_selection_text">@color/material_drawer_header_selection_text</item>
         <item name="material_drawer_header_selection_subtext">@color/material_drawer_dark_header_selection_subtext</item>
         <item name="material_drawer_legacy_style">false</item> <!-- Enables legacy Material 1 style -->
+        <item name="android:datePickerStyle">@style/DatePicker</item>
+        <item name="android:datePickerDialogTheme">@style/DatePicker</item>
     </style>
 
 
@@ -88,6 +90,20 @@
         <item name="android:padding">@dimen/appPadding</item>
 
         <item name="android:inputType">phone</item>
+    </style>
+
+    <style name="DatePicker" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:datePickerStyle">@style/DatePickerStyle</item>
+    </style>
+
+    <style name="DatePickerStyle" parent="@android:style/Widget.Material.DatePicker">
+        <item name="android:headerBackground">@color/primary_dark</item>
+        <item name="android:calendarViewShown">false</item>
+        <item name="android:yearListSelectorColor">@color/colorAccentDark</item>
+        <item name="android:datePickerMode">spinner</item>
+        <item name="android:minDate">01/01/2000</item>
+        <item name="android:spinnersShown">true</item>
     </style>
 
 </resources>
