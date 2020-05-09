@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primary_dark"
+
+    tools:context=".ui.fragments.Timer_detail">
+
+    <TextView
+        android:id="@+id/nameDetailItem"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/vertical_large_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="31sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Наименование события"
+        android:textColor="@color/colorAccent"/>
+    <TextView
+    android:id="@+id/deskDetailItem"
+    android:gravity="center"
+    android:layout_marginTop="@dimen/vertical_large_margin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="25sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/nameDetailItem"
+    android:text="До события"
+    android:textColor="@color/colorAccent"/>
+
+    <TextView
+        android:id="@+id/yarsDetailItem"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/vertical_large_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/deskDetailItem"
+        android:text="2 года"
+        android:textColor="@color/colorAccent"/>
+
+    <TextView
+        android:id="@+id/monthDetailItem"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/vertical_large_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/yarsDetailItem"
+        android:text="24 месяцев"
+        android:textColor="@color/colorAccent"/>
+
+    <TextView
+        android:id="@+id/weekDetailItem"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/vertical_large_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/monthDetailItem"
+        android:text="104 недели"
+        android:textColor="@color/colorAccent"/>
+    <TextView
+        android:id="@+id/dayDetailItem"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/vertical_large_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weekDetailItem"
+        android:text="730 дней"
+        android:textColor="@color/colorAccent"/>
+    <TextView
+        android:id="@+id/hourDetailItem"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/vertical_large_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dayDetailItem"
+        android:text="17520 часов"
+        android:textColor="@color/colorAccent"/>
+    <TextView
+        android:id="@+id/minutDetailItem"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/vertical_large_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hourDetailItem"
+        android:text="1051200 минут"
+        android:textColor="@color/colorAccent"/>
+    <TextView
+        android:id="@+id/secondDetailItem"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/vertical_large_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/minutDetailItem"
+        android:text="63072000 секунд"
+        android:textColor="@color/colorAccent"/>
+
+
+    <TextView
+        android:id="@+id/timeDetailItem"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/vertical_large_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/dataDetailItem"
+        android:text="18:12"
+        android:textColor="@color/colorAccent"/>
+
+    <TextView
+        android:id="@+id/dataDetailItem"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/vertical_large_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="12.12.2020"
+        android:textColor="@color/colorAccent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

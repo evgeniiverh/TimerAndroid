@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="1dp"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/effect"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:layout_marginTop="35dp"
+            android:text="Наименование"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_do_sob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="До события"
+            android:textSize="@dimen/normalText"
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/itemDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="18 Дней"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:layout_marginEnd="130dp"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/itemData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12.12.2020 18:30"
+        android:textSize="@dimen/normalText"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:layout_marginBottom="3dp"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
