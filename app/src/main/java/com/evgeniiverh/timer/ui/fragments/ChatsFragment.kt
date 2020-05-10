@@ -1,12 +1,15 @@
 package com.evgeniiverh.timer.ui.fragments
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.widget.DatePicker
+import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.evgeniiverh.timer.DBHelper.DBHelper
@@ -31,6 +34,11 @@ internal var listPerson:List<Person> = ArrayList<Person>()
 class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikListher{
 
     val c =Calendar.getInstance()
+    var y=0
+    var m=0
+    var d=0
+    var h=0
+    var min=0
 
 
 
@@ -72,11 +80,37 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
         val hours = c.get(Calendar.HOUR_OF_DAY)
         val minutes = c.get(Calendar.MINUTE)
 
-        var y:Int
-        var m:Int
-        var d:Int
-        val tpd = TimePickerDialog(context as MainActivity, android.R.style.Theme_Holo_Dialog, TimePickerDialog.OnTimeSetListener{view, hourOfDay, minute->
 
+        val name = EditText(context)
+
+        val alert = AlertDialog.Builder(context as MainActivity)
+            alert.setTitle("Важно сооющение")
+                .setMessage("Набить жопу")
+                .setView(name)
+                .setPositiveButton("Создать",DialogInterface.OnClickListener{view,i->
+
+
+                    val personitem = Person(
+                        0,
+                        "${name.text}",
+                        "$d.$m.$y",
+                        "$h:$min"
+                    )
+                    db.addPerson(personitem)
+                    refreshData()
+                })
+                .setNegativeButton("Отмена",DialogInterface.OnClickListener{view,i->
+                    view.cancel()
+                })
+        alert.create()
+
+
+
+
+        val tpd = TimePickerDialog(context as MainActivity, android.R.style.Theme_Holo_Dialog, TimePickerDialog.OnTimeSetListener{view, hourOfDay, minute->
+            h=hourOfDay
+            min=minute
+            alert.show()
 
         },hours,minutes,true)
 
@@ -96,3 +130,4 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
 
 
 }
+

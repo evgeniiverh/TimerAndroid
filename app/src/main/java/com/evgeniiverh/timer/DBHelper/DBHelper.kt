@@ -20,7 +20,7 @@ class DBHelper(context: MainActivity):SQLiteOpenHelper(context,DATABASE_NAME,nul
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val CREATE_TABLE_QUERY=("CREATE TABLE $TABLE_NAME($COL_ID INTEGER PRIMARY KEY,$COL_NAME TEXT,$COL_DATE TEXT,$COL_TIME TEXT)")
+        val CREATE_TABLE_QUERY=("CREATE TABLE $TABLE_NAME($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT,$COL_NAME TEXT,$COL_DATE TEXT,$COL_TIME TEXT)")
         db!!.execSQL(CREATE_TABLE_QUERY)
     }
 
@@ -56,7 +56,7 @@ class DBHelper(context: MainActivity):SQLiteOpenHelper(context,DATABASE_NAME,nul
     {
         val db = this.writableDatabase
         val values = ContentValues()
-        values.put(COL_ID,person.id)
+        //values.put(COL_ID,person.id)
         values.put(COL_NAME,person.name)
         values.put(COL_DATE,person.date)
         values.put(COL_TIME,person.time)

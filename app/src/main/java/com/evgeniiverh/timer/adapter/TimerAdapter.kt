@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.evgeniiverh.timer.R
 import com.evgeniiverh.timer.asset.Person
 import kotlinx.android.synthetic.main.timer_item.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class TimerAdapter(private val timerList: List<Person>, val clikListher: OnTimerItemClikListher) : RecyclerView.Adapter<TimerAdapter.TimerViewHolder>(){
 
@@ -32,11 +34,49 @@ class TimerAdapter(private val timerList: List<Person>, val clikListher: OnTimer
     override fun getItemCount() = timerList.size
 
     class TimerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val textView1: TextView = itemView.itemName
-        val textView2: TextView = itemView.item_do_sob
+
+
+
+        val itemName: TextView = itemView.itemName
+        val itemDateTime: TextView = itemView.itemData
+        val item_do: TextView = itemView.item_do_sob
+        val dni: TextView = itemView.itemDay
+
         fun initialize(item: Person, action: OnTimerItemClikListher){
-            textView1.text=item.name
-            textView2.text=item.date
+            val c = Calendar.getInstance()
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)+1
+            val day = c.get(Calendar.DAY_OF_MONTH)
+            val hours = c.get(Calendar.HOUR_OF_DAY)
+            val minutes = c.get(Calendar.MINUTE)
+
+            val sdf = SimpleDateFormat("dd.MM.yyyy HH:mm")
+            val dateS = sdf.parse("${item.date} ${item.time}")
+            val dateT = sdf.parse("$day.$month.$year $hours:$minutes")
+
+
+
+            val itemSob = if(dateT.compareTo(dateS)<0)
+                "До события"
+            else
+                "Прошло"
+
+            val dtime = if(dateT.compareTo(dateS)<0)
+                dateS.time-dateT.time
+            else
+                dateT.time-dateS.time
+
+            val dday = dtime/86400000
+
+
+
+
+
+            itemName.text=item.name
+            item_do.text=itemSob
+            itemDateTime.text="${item.date} ${item.time}"
+            dni.text="$dday"
+
 
             itemView.setOnClickListener{
                 action.onItemClick(item, adapterPosition)

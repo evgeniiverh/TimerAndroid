@@ -11,6 +11,9 @@ import com.evgeniiverh.timer.asset.Person
 import com.evgeniiverh.timer.databinding.ActivityMainBinding
 import com.evgeniiverh.timer.ui.fragments.ChatsFragment
 import com.evgeniiverh.timer.ui.objects.AppDrawer
+import java.security.SecureRandom
+import java.util.concurrent.ThreadLocalRandom
+import kotlin.random.Random as Random
 
 class MainActivity : AppCompatActivity(){
 
@@ -27,7 +30,7 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
 
         db= DBHelper(this)
-        generateDummyList(10)
+       // generateDummyList(10)
 
 
         super.onCreate(savedInstanceState)
@@ -41,7 +44,7 @@ class MainActivity : AppCompatActivity(){
     private fun generateDummyList(size: Int){
         for (i in 1 until size+1) {
             val personitem = Person(
-                Integer.parseInt("$i")+100,
+                0,
                 "Не курю $i",
                 "12.12.2020 $i",
                 "18:12 $i"
