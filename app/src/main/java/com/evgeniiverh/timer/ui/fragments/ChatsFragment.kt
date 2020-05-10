@@ -1,7 +1,10 @@
 package com.evgeniiverh.timer.ui.fragments
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.widget.DatePicker
 import android.widget.Toast
@@ -16,6 +19,7 @@ import com.evgeniiverh.timer.ui.objects.Strong
 import com.evgeniiverh.timer.ui.objects.TimerItem
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_chats.*
+import java.sql.Time
 import java.util.*
 import javax.xml.datatype.DatatypeConstants.MONTHS
 import kotlin.collections.ArrayList
@@ -28,9 +32,8 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
 
     val c =Calendar.getInstance()
 
-    val year = c.get(Calendar.YEAR)
-    val month = c.get(Calendar.MONTH)
-    val day = c.get(Calendar.DAY_OF_MONTH)
+
+
 
 
 
@@ -63,11 +66,32 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
 
     }
     private fun sendCode(){
-        val dpd =DatePickerDialog(context as MainActivity, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth -> }, year, month, day)
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+        val hours = c.get(Calendar.HOUR_OF_DAY)
+        val minutes = c.get(Calendar.MINUTE)
+
+        var y:Int
+        var m:Int
+        var d:Int
+        val tpd = TimePickerDialog(context as MainActivity, android.R.style.Theme_Holo_Dialog, TimePickerDialog.OnTimeSetListener{view, hourOfDay, minute->
+
+
+        },hours,minutes,true)
+
+        val dpd = DatePickerDialog(context as MainActivity,android.R.style.Theme_Holo_Dialog, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            y=year
+            m=monthOfYear+1
+            d=dayOfMonth
+            tpd.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            tpd.setMessage("    Выберите время события")
+            tpd.show()
+
+        }, year, month, day)
         dpd.setTitle("Привет")
-        //dpd.setButton(DatePickerDialog.BUTTON_POSITIVE,tag,"Привет")
+        dpd.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dpd.show()
-        Toast.makeText(activity,"Мама дурачка", Toast.LENGTH_SHORT).show()
     }
 
 

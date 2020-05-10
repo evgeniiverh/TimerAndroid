@@ -26,6 +26,8 @@
         <item name="material_drawer_legacy_style">false</item> <!-- Enables legacy Material 1 style -->
         <item name="android:datePickerStyle">@style/DatePicker</item>
         <item name="android:datePickerDialogTheme">@style/DatePicker</item>
+        <item name="android:dialogTheme">@style/MyDialogTheme</item>
+        <item name="android:timePickerStyle">@style/MyDatePicker</item>
     </style>
 
 
@@ -104,6 +106,18 @@
         <item name="android:datePickerMode">spinner</item>
         <item name="android:minDate">01/01/2000</item>
         <item name="android:spinnersShown">true</item>
+    </style>
+
+    <style name="MyDialogTheme"
+        parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:timePickerStyle">@style/MyDatePicker</item>
+    </style>
+
+    <style name="MyDatePicker"
+        parent="@android:style/Theme.Holo.Dialog">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
     </style>
 
 </resources>
