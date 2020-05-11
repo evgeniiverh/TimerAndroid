@@ -41,6 +41,7 @@ class TimerAdapter(private val timerList: List<Person>, val clikListher: OnTimer
         val itemDateTime: TextView = itemView.itemData
         val item_do: TextView = itemView.item_do_sob
         val dni: TextView = itemView.itemDay
+        val itemid:TextView=itemView.itemId
 
         fun initialize(item: Person, action: OnTimerItemClikListher){
             val c = Calendar.getInstance()
@@ -71,7 +72,7 @@ class TimerAdapter(private val timerList: List<Person>, val clikListher: OnTimer
 
 
 
-
+            itemid.text=item.id.toString()
             itemName.text=item.name
             item_do.text=itemSob
             itemDateTime.text="${item.date} ${item.time}"

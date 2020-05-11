@@ -60,6 +60,8 @@ class MyButton (private val context: Context,private val text:String,
             val bitmap = drawableToBitmap(d)
             c.drawBitmap(bitmap,(rectF.left+rectF.right)/2,(rectF.top+rectF.bottom)/2,p)
         }
+        clickRegion= rectF
+        this.pos=pos
     }
 
     private fun drawableToBitmap(d: Drawable?): Bitmap {

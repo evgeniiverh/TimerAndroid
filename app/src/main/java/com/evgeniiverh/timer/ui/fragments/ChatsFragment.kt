@@ -11,10 +11,14 @@ import android.view.View
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.view.get
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.evgeniiverh.timer.DBHelper.DBHelper
+import com.evgeniiverh.timer.DBHelper.MyButton
 import com.evgeniiverh.timer.DBHelper.MySwipeHelper
+import com.evgeniiverh.timer.Listener.MyButtonClickListener
 import com.evgeniiverh.timer.MainActivity
 import com.evgeniiverh.timer.R
 import com.evgeniiverh.timer.adapter.OnTimerItemClikListher
@@ -24,6 +28,8 @@ import com.evgeniiverh.timer.ui.objects.Strong
 import com.evgeniiverh.timer.ui.objects.TimerItem
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_chats.*
+import kotlinx.android.synthetic.main.timer_item.*
+import kotlinx.android.synthetic.main.timer_item.view.*
 import java.sql.Time
 import java.util.*
 import javax.xml.datatype.DatatypeConstants.MONTHS
@@ -52,12 +58,49 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
 
 
         db=DBHelper(activity as MainActivity)
-        //addSwipe
-        val swipe = object :MySwipeHelper(context as MainActivity, recycler_view,200)
-
         refreshData()
         super.onResume()
+
         addTimerItem.setOnClickListener{sendCode()}
+
+        //addSwipe
+        val swipe = object :MySwipeHelper(context as MainActivity, recycler_view,200)
+        {
+            override fun instantlateMyButton(
+                viewHolder: RecyclerView.ViewHolder,
+                buffer: MutableList<MyButton>
+            ) {
+                //AddButton
+                buffer.add(
+                    MyButton(context as MainActivity,
+                        "Delete",
+                        30,
+                        0,
+                        Color.parseColor("#FF3C30"),
+                        object : MyButtonClickListener{
+                            override fun onClick(pos: Int) {
+                                val ss = viewHolder.itemView.itemId.text.toString().toInt()
+                                deletData(ss)
+
+                            }
+                        })
+                )
+
+                buffer.add(
+                    MyButton(context as MainActivity,
+                        "Update",
+                        30,
+                        0,
+                        Color.parseColor("#FF9502"),
+                        object : MyButtonClickListener{
+                            override fun onClick(pos: Int) {
+                                val ss = viewHolder.itemView.itemId.text.toString().toInt()
+                                Toast.makeText(activity,"Update ID"+ss,Toast.LENGTH_SHORT).show()
+                            }
+                        })
+                )
+            }
+        }
     }
 
     private fun refreshData() {
@@ -65,8 +108,23 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
         recycler_view.adapter = TimerAdapter(listPerson,this)
         recycler_view.layoutManager = LinearLayoutManager(activity)
         recycler_view.setHasFixedSize(true)
+    }
+
+    private fun deletData(pos:Int){
+
+        val personitem = Person(
+            pos,
+            "",
+            "",
+            ""
+        )
+        db.deletePerson(personitem)
+        refreshData()
+
+        Toast.makeText(activity,"Успешно удалено",Toast.LENGTH_SHORT).show()
 
     }
+
 
 
     override fun onItemClick(item: Person, position: Int) {

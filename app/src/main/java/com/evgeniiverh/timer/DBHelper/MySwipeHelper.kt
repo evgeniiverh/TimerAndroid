@@ -43,9 +43,9 @@ abstract class MySwipeHelper(context: Context,private val recyclerView:RecyclerV
         if (swipePosition < 0) return@OnTouchListener false
         val point = Point(motionEvent.rawX.toInt(),motionEvent.rawY.toInt())
         val swipeViewHolder = recyclerView.findViewHolderForAdapterPosition(swipePosition)
-        val swipeItem = swipeViewHolder!!.itemView
+        val swipeItem = swipeViewHolder?.itemView
         val rect = Rect()
-        swipeItem.getGlobalVisibleRect(rect)
+        swipeItem?.getGlobalVisibleRect(rect)
 
         if(motionEvent.action==MotionEvent.ACTION_DOWN ||
                 motionEvent.action==MotionEvent.ACTION_MOVE ||
