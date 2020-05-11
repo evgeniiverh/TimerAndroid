@@ -11,8 +11,10 @@ import android.view.View
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.Toast
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.evgeniiverh.timer.DBHelper.DBHelper
+import com.evgeniiverh.timer.DBHelper.MySwipeHelper
 import com.evgeniiverh.timer.MainActivity
 import com.evgeniiverh.timer.R
 import com.evgeniiverh.timer.adapter.OnTimerItemClikListher
@@ -50,6 +52,9 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
 
 
         db=DBHelper(activity as MainActivity)
+        //addSwipe
+        val swipe = object :MySwipeHelper(context as MainActivity, recycler_view,200)
+
         refreshData()
         super.onResume()
         addTimerItem.setOnClickListener{sendCode()}
@@ -73,6 +78,9 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
             )?.commit()
 
     }
+
+
+
     private fun sendCode(){
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
