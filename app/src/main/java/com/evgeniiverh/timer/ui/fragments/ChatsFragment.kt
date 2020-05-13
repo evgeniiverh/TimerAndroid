@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Bundle
 import android.view.View
 import android.widget.DatePicker
 import android.widget.EditText
@@ -128,7 +129,13 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
 
 
     override fun onItemClick(item: Person, position: Int) {
+
+
+        val bundle = Bundle()
+
         Strong.Name= item.name.toString()
+        Strong.Date= item.date.toString()
+        Strong.Time= item.time.toString()
 
         activity?.supportFragmentManager?.beginTransaction()
             ?.replace(R.id.dataContainer,
@@ -151,7 +158,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
 
         val alert = AlertDialog.Builder(context as MainActivity)
             alert.setTitle("Важно сооющение")
-                .setMessage("Набить жопу")
+                .setMessage("Наименование")
                 .setView(name)
                 .setPositiveButton("Создать",DialogInterface.OnClickListener{view,i->
 
@@ -185,7 +192,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
             m=monthOfYear+1
             d=dayOfMonth
             tpd.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            tpd.setMessage("    Выберите время события")
+            tpd.setMessage("Выберите время события")
             tpd.show()
 
         }, year, month, day)
@@ -196,4 +203,5 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
 
 
 }
+
 

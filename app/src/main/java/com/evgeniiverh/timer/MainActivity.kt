@@ -3,6 +3,7 @@ package com.evgeniiverh.timer
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import androidx.appcompat.widget.Toolbar
 import com.evgeniiverh.timer.DBHelper.DBHelper
 import com.evgeniiverh.timer.adapter.TimerAdapter
