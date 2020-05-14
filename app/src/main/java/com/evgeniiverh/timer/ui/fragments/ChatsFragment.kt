@@ -161,13 +161,22 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
                 .setMessage("Наименование")
                 .setView(name)
                 .setPositiveButton("Создать",DialogInterface.OnClickListener{view,i->
+                    val dd=if (d<10)"0"+d.toString()
+                    else d.toString()
+                    val mm=if (m<10)"0"+m.toString()
+                    else m.toString()
+
+                    val hh=if (h<10)"0"+h.toString()
+                    else h.toString()
+                    val mmin=if (min<10)"0"+min.toString()
+                    else min.toString()
 
 
                     val personitem = Person(
                         0,
                         "${name.text}",
-                        "$d.$m.$y",
-                        "$h:$min"
+                        "$dd.$mm.$y",
+                        "$hh:$mmin"
                     )
                     db.addPerson(personitem)
                     refreshData()
@@ -196,7 +205,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
             tpd.show()
 
         }, year, month, day)
-        dpd.setTitle("Привет")
+        dpd.setTitle("Выберите дату события")
         dpd.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dpd.show()
     }

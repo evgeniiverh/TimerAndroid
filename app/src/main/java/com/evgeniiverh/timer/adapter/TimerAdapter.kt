@@ -72,11 +72,15 @@ class TimerAdapter(private val timerList: List<Person>, val clikListher: OnTimer
 
 
 
+
             itemid.text=item.id.toString()
             itemName.text=item.name
             item_do.text=itemSob
             itemDateTime.text="${item.date} ${item.time}"
-            dni.text="$dday"
+
+            dni.text=dday.toString()+if(dday.toInt()%10==1 && dday.toInt()!=11)" день"
+            else if(dday.toInt()>1 && dday.toInt()<5 ||dday.toInt()%10>1 && dday.toInt()%10<5 && dday.toInt()>20 ) " дня"
+            else " дней"
 
 
             itemView.setOnClickListener{

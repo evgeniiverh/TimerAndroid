@@ -28,56 +28,34 @@ class AppDrawer(val mainActivity:AppCompatActivity, val toolbar: Toolbar) {
         mDrawer = DrawerBuilder()
             .withActivity(mainActivity)
             .withToolbar(toolbar)
+            .withSliderBackgroundColorRes(R.color.colorPrimaryDark)
             .withActionBarDrawerToggle(true)
             .withSelectedItem(-1)
-            .withAccountHeader(mHeader)
+          //.withAccountHeader(mHeader)
             .addDrawerItems(
+
                 PrimaryDrawerItem().withIdentifier(100)
                     .withIconTintingEnabled(true)
-                    .withName("Создать группу")
+                    .withName("Создать событие")
+                    .withTextColorRes(R.color.colorAccent)
+                    .withIconColorRes(R.color.colorAccent)
                     .withIcon(R.drawable.ic_menu_create_groups)
                     .withSelectable(false),
                 PrimaryDrawerItem().withIdentifier(101)
                     .withIconTintingEnabled(true)
-                    .withName("Создать секретный чат")
+                    .withTextColorRes(R.color.colorAccent)
+                    .withIconColorRes(R.color.colorAccent)
+                    .withName("Версия без рекламы")
                     .withIcon(R.drawable.ic_menu_secret_chat)
                     .withSelectable(false),
                 PrimaryDrawerItem().withIdentifier(102)
                     .withIconTintingEnabled(true)
-                    .withName("Создать канал")
+                    .withTextColorRes(R.color.colorAccent)
+                    .withIconColorRes(R.color.colorAccent)
+                    .withName("Телеграмм канал")
                     .withIcon(R.drawable.ic_menu_create_channel)
-                    .withSelectable(false),
-                PrimaryDrawerItem().withIdentifier(103)
-                    .withIconTintingEnabled(true)
-                    .withName("Контакты")
-                    .withIcon(R.drawable.ic_menu_contacts)
-                    .withSelectable(false),
-                PrimaryDrawerItem().withIdentifier(104)
-                    .withIconTintingEnabled(true)
-                    .withName("Звонки")
-                    .withIcon(R.drawable.ic_menu_phone)
-                    .withSelectable(false),
-                PrimaryDrawerItem().withIdentifier(105)
-                    .withIconTintingEnabled(true)
-                    .withName("Избранное")
-                    .withIcon(R.drawable.ic_menu_favorites)
-                    .withSelectable(false),
-                PrimaryDrawerItem().withIdentifier(106)
-                    .withIconTintingEnabled(true)
-                    .withName("Настройки")
-                    .withIcon(R.drawable.ic_menu_settings)
-                    .withSelectable(false),
-                DividerDrawerItem(),
-                PrimaryDrawerItem().withIdentifier(107)
-                    .withIconTintingEnabled(true)
-                    .withName("Пригласить друзей")
-                    .withIcon(R.drawable.ic_menu_invate)
-                    .withSelectable(false),
-                PrimaryDrawerItem().withIdentifier(108)
-                    .withIconTintingEnabled(true)
-                    .withName("Вопросы о Telegram")
-                    .withIcon(R.drawable.ic_menu_help)
                     .withSelectable(false)
+
             )
             .withOnDrawerItemClickListener(object :Drawer.OnDrawerItemClickListener{
                 override fun onItemClick(
@@ -102,11 +80,8 @@ class AppDrawer(val mainActivity:AppCompatActivity, val toolbar: Toolbar) {
     private fun createHeader() {
         mHeader = AccountHeaderBuilder()
             .withActivity(mainActivity)
-            .withHeaderBackground(R.drawable.header)
-            .addProfiles(
-                ProfileDrawerItem().withName("Evgeny Verkhoturov")
-                    .withEmail("+79091111111")
-            ).build()
+            .withHeaderBackground(R.drawable.ic_camera)
+            .build()
 
     }
 }

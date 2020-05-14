@@ -34,15 +34,11 @@ class Timer_detail :BaseFragment(R.layout.fragment_timer_detail) {
     val dateT = sdf.parse("$day.$month.$year $hours:$minutes")
 
     override fun onResume() {
+        mainHandler.post(updateTextTask)
         super.onResume()
-
-
         nameDetailItem.text = Strong.Name
         dataDetailItem.text = Strong.Date
         timeDetailItem.text = Strong.Time
-
-
-        mainHandler.post(updateTextTask)
 
     }
 
@@ -73,13 +69,36 @@ class Timer_detail :BaseFragment(R.layout.fragment_timer_detail) {
 
         deskDetailItem.text=itemSob
 
-        yarsDetailItem.text=dyear.toString()+" лет"
-        monthDetailItem.text=dmount.toString()+" месяцев"
-        weekDetailItem.text=dnedel.toString()+" недель"
-        dayDetailItem.text=dday.toString()+" дней"
-        hourDetailItem.text=dhour.toString()+" часов"
-        minutDetailItem.text=dminute.toString()+" минут"
-        secondDetailItem.text=dsecond.toString()+" секунд"
+        yarsDetailItem.text=dyear.toString()+if(dyear.toInt()%10==1 && dyear.toInt()!=11)" год"
+        else if(dyear.toInt()>1 && dyear.toInt()<5) " года"
+        else if(dyear.toInt()>=5) " лет"
+        else ""
+
+
+
+        monthDetailItem.text=dmount.toString()+if(dmount.toInt()%10==1 && dmount.toInt()!=11)" месяц"
+        else if(dmount.toInt()>1 && dmount.toInt()<5) " месяца"
+        else " месяцев"
+
+        weekDetailItem.text=dnedel.toString()+if(dnedel.toInt()%10==1 && dmount.toInt()!=11)" неделя"
+        else if(dnedel.toInt()>1 && dnedel.toInt()<5||dnedel.toInt()%10>1 && dnedel.toInt()%10<5 && dnedel.toInt()>20) " недели"
+        else " недель"
+        dayDetailItem.text=dday.toString()+if(dday.toInt()%10==1 && dday.toInt()!=11)" день"
+        else if(dday.toInt()>1 && dday.toInt()<5 ||dday.toInt()%10>1 && dday.toInt()%10<5 && dday.toInt()>20 ) " дня"
+        else " дней"
+
+        hourDetailItem.text=dhour.toString()+if(dhour.toInt()%10==1 && dhour.toInt()!=11)" час"
+        else if(dhour.toInt()>1 && dhour.toInt()<5 ||dhour.toInt()%10>1 && dhour.toInt()%10<5 && dhour.toInt()>20 ) " часа"
+        else " часов"
+
+        minutDetailItem.text=dminute.toString()+if(dminute.toInt()%10==1 && dminute.toInt()!=11)" минута"
+        else if(dminute.toInt()>1 && dminute.toInt()<5 ||dminute.toInt()%10>1 && dminute.toInt()%10<5 && dminute.toInt()>20 ) " минуты"
+        else " минут"
+
+        secondDetailItem.text=dsecond.toString()+if(dsecond.toInt()%10==1 && dsecond.toInt()!=11)" секунда"
+        else if(dsecond.toInt()>1 && dsecond.toInt()<5 ||dsecond.toInt()%10>1 && dsecond.toInt()%10<5 && dsecond.toInt()>20 ) " секунды"
+        else " секунд"
+
         dateT.time=dateT.time+1000
 
 

@@ -1,20 +1,19 @@
 package com.evgeniiverh.timer
 
-import android.app.DatePickerDialog
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Application
+import android.content.Context
 import android.os.Bundle
-import android.os.CountDownTimer
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.evgeniiverh.timer.DBHelper.DBHelper
-import com.evgeniiverh.timer.adapter.TimerAdapter
 import com.evgeniiverh.timer.asset.Person
-
 import com.evgeniiverh.timer.databinding.ActivityMainBinding
 import com.evgeniiverh.timer.ui.fragments.ChatsFragment
 import com.evgeniiverh.timer.ui.objects.AppDrawer
-import java.security.SecureRandom
-import java.util.concurrent.ThreadLocalRandom
-import kotlin.random.Random as Random
+import com.yandex.metrica.YandexMetrica
+import com.yandex.metrica.YandexMetricaConfig
+import com.yandex.metrica.push.YandexMetricaPush
+
 
 class MainActivity : AppCompatActivity(){
 
@@ -28,35 +27,27 @@ class MainActivity : AppCompatActivity(){
 
 
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        db= DBHelper(this)
-       // generateDummyList(10)
-
+       // db= DBHelper(this)
 
         super.onCreate(savedInstanceState)
         mBinding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
+        val config = YandexMetricaConfig.newConfigBuilder("37d795de-fc28-4e98-9a8c-1d5665a1f7e2").build()
+        // Initializing the AppMetrica SDK.
+        // Initializing the AppMetrica SDK.
+        YandexMetrica.activate(applicationContext, config)
+        // Automatic tracking of user activity.
+        // Automatic tracking of user activity.
+        YandexMetrica.enableActivityAutoTracking(application)
 
 
         }
-
-    private fun generateDummyList(size: Int){
-        for (i in 1 until size+1) {
-            val personitem = Person(
-                0,
-                "Не курю $i",
-                "12.12.2020 $i",
-                "18:12 $i"
-            )
-             db.addPerson(personitem)
-        }
-
-
-    }
-
-
 
 
     override fun onStart() {
@@ -64,6 +55,7 @@ class MainActivity : AppCompatActivity(){
         initFields()
         initFunc()
     }
+
     private fun initFunc(){
         setSupportActionBar(mToolbar)
             mAppDrawer.create()
@@ -87,3 +79,6 @@ class MainActivity : AppCompatActivity(){
     }
 
 }
+
+
+
