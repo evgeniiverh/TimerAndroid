@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:999576420479:android:2cdc2d447eb37cec957f4a",
+        "mobilesdk_app_id": "1:999576420479:android:8337913300ad72db957f4a",
         "android_client_info": {
-          "package_name": "com.evgeniiverh.time"
+          "package_name": "com.evgeniiverh.timer"
         }
       },
       "oauth_client": [

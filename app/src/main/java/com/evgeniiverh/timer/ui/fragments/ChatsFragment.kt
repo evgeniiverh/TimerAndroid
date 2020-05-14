@@ -96,7 +96,8 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
                         object : MyButtonClickListener{
                             override fun onClick(pos: Int) {
                                 val ss = viewHolder.itemView.itemId.text.toString().toInt()
-                                Toast.makeText(activity,"Update ID"+ss,Toast.LENGTH_SHORT).show()
+                                val sn = viewHolder.itemView.itemName.text.toString()
+                                updateData(ss,sn)
                             }
                         })
                 )
@@ -126,6 +127,59 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
 
     }
 
+    private fun updateData(pos:Int, name: String){
+
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+        val hours = c.get(Calendar.HOUR_OF_DAY)
+        val minutes = c.get(Calendar.MINUTE)
+
+
+        val tpd = TimePickerDialog(context as MainActivity, android.R.style.Theme_Holo_Dialog, TimePickerDialog.OnTimeSetListener{view, hourOfDay, minute->
+            h=hourOfDay
+            min=minute
+
+            val dd=if (d<10)"0"+d.toString()
+            else d.toString()
+            val mm=if (m<10)"0"+m.toString()
+            else m.toString()
+
+            val hh=if (h<10)"0"+h.toString()
+            else h.toString()
+            val mmin=if (min<10)"0"+min.toString()
+            else min.toString()
+
+
+            val personitem = Person(
+                pos,
+                "$name",
+                "$dd.$mm.$y",
+                "$hh:$mmin"
+            )
+            db.updatePerson(personitem)
+            refreshData()
+            Toast.makeText(activity,"Успешно изменено",Toast.LENGTH_SHORT).show()
+
+
+
+
+        },hours,minutes,true)
+
+        val dpd = DatePickerDialog(context as MainActivity,android.R.style.Theme_Holo_Dialog, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            y=year
+            m=monthOfYear+1
+            d=dayOfMonth
+            tpd.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            tpd.setMessage("Выберите время события")
+            tpd.show()
+
+        }, year, month, day)
+        dpd.setTitle("Выберите дату события")
+        dpd.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dpd.show()
+
+    }
 
 
     override fun onItemClick(item: Person, position: Int) {

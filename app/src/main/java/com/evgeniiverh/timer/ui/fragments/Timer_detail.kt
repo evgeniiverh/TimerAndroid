@@ -72,7 +72,7 @@ class Timer_detail :BaseFragment(R.layout.fragment_timer_detail) {
         yarsDetailItem.text=dyear.toString()+if(dyear.toInt()%10==1 && dyear.toInt()!=11)" год"
         else if(dyear.toInt()>1 && dyear.toInt()<5) " года"
         else if(dyear.toInt()>=5) " лет"
-        else ""
+        else " лет"
 
 
 

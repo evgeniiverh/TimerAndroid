@@ -46,6 +46,8 @@ class MainActivity : AppCompatActivity(){
         // Automatic tracking of user activity.
         YandexMetrica.enableActivityAutoTracking(application)
 
+        YandexMetricaPush.init(applicationContext);
+
 
         }
 
