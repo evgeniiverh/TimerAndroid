@@ -20,6 +20,22 @@
     <string name="register_hint_default_code">- - - - - -</string>
     <string name="register_title_your_phone">Ваш телефон</string>
     <string name="register_toast_enter_phone">Введите номер телефона</string>
+    <string name="yarl_pre_1">\ год</string>
+    <string name="yarl_pre_2">\ года</string>
+    <string name="yarl_pre_3">\ лет</string>
+    <string name="yarl_pre_4">\ лет</string>
+    <string name="mount_pre_1">" месяц"</string>
+    <string name="mount_pre_2">" месяца"</string>
+    <string name="mount_pre_3">" месяцев"</string>
+    <string name="nedely_pre_1">" неделя"</string>
+    <string name="nedely_pre_2">" недели"</string>
+    <string name="nedely_pre_3">" недель"</string>
+    <string name="day_pre_1">" день"</string>
+    <string name="day_pre_2">" дня"</string>
+    <string name="day_pre_3">" дней"</string>
+    <string name="hour_pre_1">" час"</string>
+    <string name="hour_pre_2">" часа"</string>
+    <string name="hour_pre_3">" часов"</string>
 
 
 </resources>

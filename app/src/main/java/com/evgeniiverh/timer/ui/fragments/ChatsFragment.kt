@@ -3,17 +3,14 @@ package com.evgeniiverh.timer.ui.fragments
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.Context
 import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.View
-import android.widget.DatePicker
+import android.text.InputFilter
+import android.text.InputFilter.LengthFilter
 import android.widget.EditText
 import android.widget.Toast
-import androidx.core.view.get
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.evgeniiverh.timer.DBHelper.DBHelper
@@ -26,14 +23,9 @@ import com.evgeniiverh.timer.adapter.OnTimerItemClikListher
 import com.evgeniiverh.timer.adapter.TimerAdapter
 import com.evgeniiverh.timer.asset.Person
 import com.evgeniiverh.timer.ui.objects.Strong
-import com.evgeniiverh.timer.ui.objects.TimerItem
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_chats.*
-import kotlinx.android.synthetic.main.timer_item.*
 import kotlinx.android.synthetic.main.timer_item.view.*
-import java.sql.Time
 import java.util.*
-import javax.xml.datatype.DatatypeConstants.MONTHS
 import kotlin.collections.ArrayList
 
 internal lateinit var db: DBHelper
@@ -62,7 +54,12 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
         refreshData()
         super.onResume()
 
+
+
         addTimerItem.setOnClickListener{sendCode()}
+
+
+
 
         //addSwipe
         val swipe = object :MySwipeHelper(context as MainActivity, recycler_view,200)
@@ -105,7 +102,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
         }
     }
 
-    private fun refreshData() {
+    public fun refreshData() {
         listPerson=db.allPerson
         recycler_view.adapter = TimerAdapter(listPerson,this)
         recycler_view.layoutManager = LinearLayoutManager(activity)
@@ -209,6 +206,10 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
 
 
         val name = EditText(context)
+
+        val FilterArray = arrayOfNulls<InputFilter>(1)
+        FilterArray[0] = LengthFilter(15)
+        name.setFilters(FilterArray)
 
         val alert = AlertDialog.Builder(context as MainActivity)
             alert.setTitle("Важно сооющение")
