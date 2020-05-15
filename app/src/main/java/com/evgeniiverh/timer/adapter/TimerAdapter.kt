@@ -6,30 +6,34 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.evgeniiverh.timer.MainActivity
 import com.evgeniiverh.timer.R
 import com.evgeniiverh.timer.asset.Person
 import kotlinx.android.synthetic.main.timer_item.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 class TimerAdapter(private val timerList: List<Person>, val clikListher: OnTimerItemClikListher) : RecyclerView.Adapter<TimerAdapter.TimerViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimerViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.timer_item,
-        parent,false)
+       var itemView: View = LayoutInflater.from(parent.context).inflate(R.layout.timer_item, parent,false)
+
+
+
        return TimerViewHolder(itemView)
+
+
     }
 
     override fun onBindViewHolder(holder: TimerViewHolder, position: Int) {
-       // val currentItem = timerList[position]
-       // holder.textView1.text = currentItem.text1
-       // holder.textView2.text = currentItem.text2
+
         holder.initialize(timerList.get(position), clikListher)
 
-
-
     }
+
 
     override fun getItemCount() = timerList.size
 
