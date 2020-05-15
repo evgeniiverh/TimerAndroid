@@ -92,6 +92,7 @@ class TimerAdapter(private val timerList: List<Person>, val clikListher: OnTimer
 
 }
 
+
 interface OnTimerItemClikListher{
     fun onItemClick(item: Person, position: Int)
 }

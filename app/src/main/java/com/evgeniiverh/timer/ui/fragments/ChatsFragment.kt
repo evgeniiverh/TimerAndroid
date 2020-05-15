@@ -212,8 +212,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
         name.setFilters(FilterArray)
 
         val alert = AlertDialog.Builder(context as MainActivity)
-            alert.setTitle("Важно сооющение")
-                .setMessage("Наименование")
+            alert.setTitle("Введите наименование")
                 .setView(name)
                 .setPositiveButton("Создать",DialogInterface.OnClickListener{view,i->
                     val dd=if (d<10)"0"+d.toString()

@@ -95,14 +95,23 @@ class Timer_detail :BaseFragment(R.layout.fragment_timer_detail) {
 
         hourDetailItem.text= itemHourD
 
-        minutDetailItem.text=dminute.toString()+if(dminute.toInt()%10==1 && dminute.toInt()!=11)" минута"
-        else if(dminute.toInt() in 2..4 || dminute.toInt()%10 in 2..4 && dminute.toInt()>20 ) " минуты"
-        else " минут"
+        val  itemMinutD = dminute.toString()+if(dminute.toInt()%10==1 && dminute.toInt()!=11)getString(
+                    R.string.minut_pre_1)
+        else if(dminute.toInt() in 2..4 || dminute.toInt()%10 in 2..4 && dminute.toInt()>20 ) getString(
+                    R.string.minut_pre_2)
+        else getString(R.string.minut_pre_3)
 
-        secondDetailItem.text=dsecond.toString()+if(dsecond.toInt()%10==1 && dsecond.toInt()!=11)" секунда"
-        else if(dsecond.toInt() in 2..4 || dsecond.toInt()%10 in 2..4 && dsecond.toInt()>20 ) " секунды"
-        else " секунд"
+        minutDetailItem.text=itemMinutD
 
+        val  itemSecondD = dsecond.toString()+if(dsecond.toInt()%10==1 && dsecond.toInt()!=11)getString(
+                    R.string.second_pre_1)
+        else if(dsecond.toInt() in 2..4 || dsecond.toInt()%10 in 2..4 && dsecond.toInt()>20 ) getString(
+                    R.string.second_pre_2)
+        else getString(R.string.second_pre_3)
+
+
+        secondDetailItem.text=itemSecondD
+        
         dateT.time=dateT.time+1000
 
 

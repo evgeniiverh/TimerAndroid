@@ -36,6 +36,12 @@
     <string name="hour_pre_1">" час"</string>
     <string name="hour_pre_2">" часа"</string>
     <string name="hour_pre_3">" часов"</string>
+    <string name="minut_pre_1">" минута"</string>
+    <string name="minut_pre_2">" минуты"</string>
+    <string name="minut_pre_3">" минут"</string>
+    <string name="second_pre_1">" секунда"</string>
+    <string name="second_pre_2">" секунды"</string>
+    <string name="second_pre_3">" секунд"</string>
 
 
 </resources>
