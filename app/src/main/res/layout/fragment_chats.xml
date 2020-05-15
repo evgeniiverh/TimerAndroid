@@ -13,37 +13,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteX="0p"
         tools:layout_editor_absoluteY="0dp"
         tools:listitem="@layout/timer_item" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_height="75dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:radius="100dp"
-        android:background="@drawable/riple"/>
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addTimerItem"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/vertical_large_margin"
         android:background="@drawable/riple"
         android:backgroundTint="@color/primary"
         android:clickable="true"
         android:focusable="true"
-
+        android:alpha="0.8"
 
         android:src="@drawable/ic_add_item_2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
