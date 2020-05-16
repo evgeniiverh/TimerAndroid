@@ -18,6 +18,7 @@ import com.evgeniiverh.timer.DBHelper.MyButton
 import com.evgeniiverh.timer.DBHelper.MySwipeHelper
 import com.evgeniiverh.timer.Listener.MyButtonClickListener
 import com.evgeniiverh.timer.MainActivity
+import com.evgeniiverh.timer.MyAlarm
 import com.evgeniiverh.timer.R
 import com.evgeniiverh.timer.adapter.OnTimerItemClikListher
 import com.evgeniiverh.timer.adapter.TimerAdapter
@@ -47,6 +48,8 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
 
 
     override fun onResume() {
+
+
 
 
 
@@ -187,6 +190,8 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
         Strong.Name= item.name.toString()
         Strong.Date= item.date.toString()
         Strong.Time= item.time.toString()
+        MyAlarm.setServiceAlarm(context as MainActivity, true);
+
 
         activity?.supportFragmentManager?.beginTransaction()
             ?.replace(R.id.dataContainer,

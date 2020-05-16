@@ -1,8 +1,8 @@
 package com.evgeniiverh.timer
 
-import android.app.Application
-import android.content.Context
+import android.graphics.Typeface
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.evgeniiverh.timer.DBHelper.DBHelper
@@ -31,8 +31,6 @@ class MainActivity : AppCompatActivity(){
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-       // db= DBHelper(this)
 
         super.onCreate(savedInstanceState)
         mBinding=ActivityMainBinding.inflate(layoutInflater)

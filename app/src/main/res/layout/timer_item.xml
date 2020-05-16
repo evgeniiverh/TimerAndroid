@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_margin="1dp"
+    android:layout_marginTop="1dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="1dp"
+    android:layout_marginEnd="1dp"
+
+    android:shadowDx="5"
+    android:shadowDy="5"
+    android:shadowRadius="35"
+    android:shadowColor="@color/material_drawer_primary"
+
+
     android:layout_width="match_parent"
     android:layout_height="90dp"
     android:clickable="true"
@@ -27,8 +37,12 @@
             android:layout_marginStart="@dimen/horizontal_margin"
             android:layout_marginTop="35dp"
             android:text="Наименование"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimary"
             android:textSize="18sp"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="15"
+            android:shadowColor="@color/colorBlack"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -41,22 +55,31 @@
             android:textSize="@dimen/normalText"
             android:layout_marginEnd="@dimen/horizontal_margin"
             android:layout_marginTop="8dp"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimary"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="15"
+            android:shadowColor="@color/colorBlack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <TextView
-            android:id="@+id/itemDay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="18 Дней"
-            android:textStyle="bold"
-            android:textSize="30sp"
-            android:layout_marginEnd="130dp"
-            android:layout_marginTop="24dp"
-            android:textColor="@color/colorAccent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:id="@+id/itemDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="18 Дней"
+        android:textColor="@color/accent"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="15"
+        android:shadowColor="@color/colorBlack"
+        android:textSize="30sp"
+
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/itemData"
@@ -66,7 +89,11 @@
         android:textSize="@dimen/normalText"
         android:layout_marginEnd="@dimen/horizontal_margin"
         android:layout_marginBottom="3dp"
-        android:textColor="@color/colorAccent"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="15"
+        android:shadowColor="@color/colorBlack"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
