@@ -26,26 +26,12 @@
         tools:layout_editor_absoluteY="0dp"
         tools:listitem="@layout/timer_item" />
 
-  <!--  <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addTimerItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_large_margin"w
-        android:background="@drawable/riple"
-        android:backgroundTint="@color/primary"
-        android:clickable="true"
-        android:focusable="true"
-        android:alpha="0.8"
-        android:src="@drawable/ic_add_item_2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        /> -->
             <Button
                 android:id="@+id/addTimerItem"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginStart="70dp"
+                android:layout_marginEnd="70dp"
                 android:backgroundTint="@color/colorGray"
                 android:background="@drawable/riple"
 
