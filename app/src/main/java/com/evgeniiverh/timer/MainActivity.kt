@@ -36,15 +36,10 @@ class MainActivity : AppCompatActivity(){
         mBinding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
-        val config = YandexMetricaConfig.newConfigBuilder("37d795de-fc28-4e98-9a8c-1d5665a1f7e2").build()
-        // Initializing the AppMetrica SDK.
-        // Initializing the AppMetrica SDK.
-        YandexMetrica.activate(applicationContext, config)
-        // Automatic tracking of user activity.
-        // Automatic tracking of user activity.
-        YandexMetrica.enableActivityAutoTracking(application)
-
-        YandexMetricaPush.init(applicationContext);
+        //val config = YandexMetricaConfig.newConfigBuilder("37d795de-fc28-4e98-9a8c-1d5665a1f7e2").build()
+      //  YandexMetrica.activate(applicationContext, config)
+      //  YandexMetrica.enableActivityAutoTracking(application)
+      //  YandexMetricaPush.init(applicationContext);
 
 
         }
