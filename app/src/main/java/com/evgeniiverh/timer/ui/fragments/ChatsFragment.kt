@@ -1,5 +1,6 @@
 package com.evgeniiverh.timer.ui.fragments
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -12,6 +13,7 @@ import android.text.InputFilter.LengthFilter
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.NonNull
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.evgeniiverh.timer.DBHelper.DBHelper
@@ -25,6 +27,12 @@ import com.evgeniiverh.timer.adapter.OnTimerItemClikListher
 import com.evgeniiverh.timer.adapter.TimerAdapter
 import com.evgeniiverh.timer.asset.Person
 import com.evgeniiverh.timer.ui.objects.Strong
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.rewarded.RewardItem
+import com.google.android.gms.ads.rewarded.RewardedAd
+import com.google.android.gms.ads.rewarded.RewardedAdCallback
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import kotlinx.android.synthetic.main.fragment_chats.*
 import kotlinx.android.synthetic.main.timer_item.view.*
 import java.util.*
@@ -32,9 +40,13 @@ import kotlin.collections.ArrayList
 
 internal lateinit var db: DBHelper
 internal var listPerson:List<Person> = ArrayList<Person>()
+private lateinit var rewardedAd: RewardedAd
+
 
 
 class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikListher{
+
+
 
     val c =Calendar.getInstance()
     var y=0
@@ -50,17 +62,26 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
 
     override fun onResume() {
 
-
-
-
-
         db=DBHelper(activity as MainActivity)
         refreshData()
         super.onResume()
 
+        rewardedAd = RewardedAd(context, "ca-app-pub-3940256099942544/5224354917")
+        val adLoadCallback = object: RewardedAdLoadCallback() {
+            override fun onRewardedAdLoaded() {
+
+            }
+            override fun onRewardedAdFailedToLoad(errorCode: Int) {
+
+            }
+        }
+        rewardedAd.loadAd(AdRequest.Builder().build(), adLoadCallback)
 
 
-        addTimerItem.setOnClickListener{sendCode()}
+
+
+
+        addTimerItem.setOnClickListener{sendCodeItem()}
 
 
 
@@ -200,6 +221,36 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
                 Timer_detail()
             )?.commit()
 
+    }
+    private fun sendCodeItem(){
+        if(listPerson.size<3)
+            sendCode()
+        else if (listPerson.size>=3 && listPerson.size<6)
+            if (rewardedAd.isLoaded) {
+
+                val adCallback = object: RewardedAdCallback() {
+                    override fun onRewardedAdOpened() {
+                        // Ad opened.
+                    }
+                    override fun onRewardedAdClosed() {
+                        // Ad closed.
+                    }
+                    override fun onUserEarnedReward(@NonNull reward: RewardItem) {
+                        // User earned reward.
+                        sendCode()
+                    }
+                    override fun onRewardedAdFailedToShow(errorCode: Int) {
+                        // Ad failed to display.
+                        Toast.makeText(activity,"Ошибка, попрубуйте позже",Toast.LENGTH_SHORT).show()
+                    }
+                }
+                rewardedAd.show(activity, adCallback)
+            }
+            else {
+                Log.d("TAG", "The rewarded ad wasn't loaded yet.")
+            }
+
+        else Toast.makeText(activity,"Купите полную версию",Toast.LENGTH_SHORT).show()
     }
 
 
