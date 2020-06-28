@@ -1,6 +1,5 @@
 package com.evgeniiverh.timer.ui.fragments
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -21,14 +20,12 @@ import com.evgeniiverh.timer.DBHelper.MyButton
 import com.evgeniiverh.timer.DBHelper.MySwipeHelper
 import com.evgeniiverh.timer.Listener.MyButtonClickListener
 import com.evgeniiverh.timer.MainActivity
-import com.evgeniiverh.timer.MyAlarm
 import com.evgeniiverh.timer.R
 import com.evgeniiverh.timer.adapter.OnTimerItemClikListher
 import com.evgeniiverh.timer.adapter.TimerAdapter
 import com.evgeniiverh.timer.asset.Person
 import com.evgeniiverh.timer.ui.objects.Strong
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.rewarded.RewardItem
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdCallback
@@ -213,7 +210,6 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
         Strong.Name= item.name.toString()
         Strong.Date= item.date.toString()
         Strong.Time= item.time.toString()
-        MyAlarm.setServiceAlarm(context as MainActivity, true);
 
 
         activity?.supportFragmentManager?.beginTransaction()
@@ -266,7 +262,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
         val name = EditText(context)
 
         val FilterArray = arrayOfNulls<InputFilter>(1)
-        FilterArray[0] = LengthFilter(15)
+        FilterArray[0] = LengthFilter(10)
         name.setFilters(FilterArray)
 
         val alert = AlertDialog.Builder(context as MainActivity)

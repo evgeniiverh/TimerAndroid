@@ -1,31 +1,23 @@
 package com.evgeniiverh.timer
 
-import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.evgeniiverh.timer.DBHelper.DBHelper
-import com.evgeniiverh.timer.asset.Person
+import com.anjlab.android.iab.v3.BillingProcessor
+import com.anjlab.android.iab.v3.TransactionDetails
 import com.evgeniiverh.timer.databinding.ActivityMainBinding
 import com.evgeniiverh.timer.ui.fragments.ChatsFragment
-import com.evgeniiverh.timer.ui.objects.AppDrawer
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.rewarded.RewardedAd
-import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
-import com.yandex.metrica.YandexMetrica
-import com.yandex.metrica.YandexMetricaConfig
-import com.yandex.metrica.push.YandexMetricaPush
 
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() ,BillingProcessor.IBillingHandler{
 
 
     private lateinit var mBinding: ActivityMainBinding
-    private lateinit var mAppDrawer: AppDrawer
     private lateinit var mToolbar: Toolbar
     private lateinit var mInterstitialAd: InterstitialAd
     private lateinit var rewardedAd: RewardedAd
@@ -42,6 +34,8 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         mBinding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+
+
 
 
 
@@ -68,7 +62,6 @@ class MainActivity : AppCompatActivity(){
 
     private fun initFunc(){
         setSupportActionBar(mToolbar)
-            mAppDrawer.create()
             supportFragmentManager.beginTransaction()
                 .replace(R.id.dataContainer,
                     ChatsFragment()
@@ -93,7 +86,22 @@ class MainActivity : AppCompatActivity(){
 
     private fun initFields(){
         mToolbar = mBinding.mainToolbar
-        mAppDrawer=AppDrawer(this,mToolbar)
+    }
+
+    override fun onBillingInitialized() {
+
+    }
+
+    override fun onPurchaseHistoryRestored() {
+
+    }
+
+    override fun onProductPurchased(productId: String, details: TransactionDetails?) {
+
+    }
+
+    override fun onBillingError(errorCode: Int, error: Throwable?) {
+
     }
 
 }

@@ -8,6 +8,7 @@
 
     tools:context=".ui.fragments.Timer_detail">
 
+
     <TextView
         android:id="@+id/nameDetailItem"
         android:gravity="center"
@@ -136,6 +137,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:text="12.12.2020"
         android:textColor="@color/colorAccent"/>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
