@@ -6,6 +6,6 @@
     <dimen name="vertical_large_margin">16dp</dimen>
     <!--settings fragment-->
 
-    <dimen name="settings_ripple_effect_radius">30dp</dimen>
+    <dimen name="settings_ripple_effect_radius">5dp</dimen>
 
 </resources>
