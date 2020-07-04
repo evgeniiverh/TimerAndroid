@@ -2,6 +2,7 @@ package com.evgeniiverh.timer.adapter
 
 
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,7 +63,8 @@ class TimerAdapter(private val timerList: List<Person>, val clikListher: OnTimer
 
 
             val itemSob = if(dateT.compareTo(dateS)<0)
-                "До события"
+
+                context.getString(R.string.dosob)
             else
                 "Прошло"
 
