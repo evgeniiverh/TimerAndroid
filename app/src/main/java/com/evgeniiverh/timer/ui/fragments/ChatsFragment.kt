@@ -93,7 +93,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
                 //AddButton
                 buffer.add(
                     MyButton(context as MainActivity,
-                        "Delete",
+                        getString(R.string.itemDelete),
                         30,
                         0,
                         Color.parseColor("#FF3C30"),
@@ -108,7 +108,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
 
                 buffer.add(
                     MyButton(context as MainActivity,
-                        "Update",
+                        getString(R.string.itemUpdate),
                         30,
                         0,
                         Color.parseColor("#FF9502"),
@@ -129,7 +129,6 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
         recycler_view.adapter = TimerAdapter(listPerson,this)
         recycler_view.layoutManager = LinearLayoutManager(activity)
         recycler_view.setHasFixedSize(true)
-        Log.d("myTag", "${listPerson.size}");
     }
 
     private fun deletData(pos:Int){
@@ -143,7 +142,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
         db.deletePerson(personitem)
         refreshData()
 
-        Toast.makeText(activity,"Успешно удалено",Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity,getString(R.string.socsdelete),Toast.LENGTH_SHORT).show()
 
     }
 
@@ -179,7 +178,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
             )
             db.updatePerson(personitem)
             refreshData()
-            Toast.makeText(activity,"Успешно изменено",Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity,getString(R.string.socsupdate),Toast.LENGTH_SHORT).show()
 
 
 
@@ -191,11 +190,11 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
             m=monthOfYear+1
             d=dayOfMonth
             tpd.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            tpd.setMessage("Выберите время события")
+            tpd.setMessage(getString(R.string.selectTime))
             tpd.show()
 
         }, year, month, day)
-        dpd.setTitle("Выберите дату события")
+        dpd.setTitle(getString(R.string.selectDate))
         dpd.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dpd.show()
 
@@ -237,7 +236,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
                     }
                     override fun onRewardedAdFailedToShow(errorCode: Int) {
                         // Ad failed to display.
-                        Toast.makeText(activity,"Ошибка, попрубуйте позже",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity,getString(R.string.error),Toast.LENGTH_SHORT).show()
                     }
                 }
                 rewardedAd.show(activity, adCallback)
@@ -246,7 +245,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
                 Log.d("TAG", "The rewarded ad wasn't loaded yet.")
             }
 
-        else Toast.makeText(activity,"Купите полную версию",Toast.LENGTH_SHORT).show()
+        else Toast.makeText(activity,getString(R.string.payFull),Toast.LENGTH_SHORT).show()
     }
 
 
@@ -266,9 +265,9 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
         name.setFilters(FilterArray)
 
         val alert = AlertDialog.Builder(context as MainActivity)
-            alert.setTitle("Введите наименование")
+            alert.setTitle(getString(R.string.inputName))
                 .setView(name)
-                .setPositiveButton("Создать",DialogInterface.OnClickListener{view,i->
+                .setPositiveButton(getString(R.string.create),DialogInterface.OnClickListener{ view, i->
                     val dd=if (d<10)"0"+d.toString()
                     else d.toString()
                     val mm=if (m<10)"0"+m.toString()
@@ -289,7 +288,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
                     db.addPerson(personitem)
                     refreshData()
                 })
-                .setNegativeButton("Отмена",DialogInterface.OnClickListener{view,i->
+                .setNegativeButton(getString(R.string.cancel),DialogInterface.OnClickListener{ view, i->
                     view.cancel()
                 })
         alert.create()
@@ -309,11 +308,11 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
             m=monthOfYear+1
             d=dayOfMonth
             tpd.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            tpd.setMessage("Выберите время события")
+            tpd.setMessage(getString(R.string.selectTime))
             tpd.show()
 
         }, year, month, day)
-        dpd.setTitle("Выберите дату события")
+        dpd.setTitle(getString(R.string.selectDate))
         dpd.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dpd.show()
     }

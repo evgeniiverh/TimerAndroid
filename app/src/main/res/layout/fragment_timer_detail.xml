@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="Наименование события"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/material_drawer_primary_dark"/>
     <TextView
     android:id="@+id/deskDetailItem"
     android:gravity="center"
@@ -132,7 +132,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/minutDetailItem"
         android:text="18:12"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/material_drawer_primary_dark"/>
 
     <TextView
         android:id="@+id/dataDetailItem"
@@ -144,7 +144,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/minutDetailItem"
         android:text="12.12.2020"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/material_drawer_primary_dark"/>
 
 
     </LinearLayout>

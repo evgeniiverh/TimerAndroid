@@ -41,9 +41,9 @@ class Timer_detail :BaseFragment(R.layout.fragment_timer_detail) {
 
 
         val itemSob = if(dateT!! < dateS)
-            "До события"
+            getString(R.string.do_sob)
         else
-            "Прошло"
+            getString(R.string.proshlo)
 
          val dtime = if(dateT < dateS)
             dateS!!.time-dateT.time
