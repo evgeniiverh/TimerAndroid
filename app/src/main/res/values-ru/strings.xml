@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Timer</string>
+    <string name="app_name">Таймер событий</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="yarl_pre_1">\ год</string>
@@ -24,7 +24,7 @@
     <string name="second_pre_1">" секунда"</string>
     <string name="second_pre_2">" секунды"</string>
     <string name="second_pre_3">" секунд"</string>
-    <string name="InterstitialAdID">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="InterstitialAdID">ca-app-pub-4432004591406050/3356926626</string>
     <string name="itemDelete">Удалить</string>
     <string name="itemUpdate">Изменить</string>
     <string name="socsdelete">Успешно удалено</string>

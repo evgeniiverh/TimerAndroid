@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Timer</string>
+    <string name="app_name">Event timer</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="yarl_pre_1">\ year</string>
@@ -24,7 +24,7 @@
     <string name="second_pre_1">" second"</string>
     <string name="second_pre_2">" second"</string>
     <string name="second_pre_3">" second"</string>
-    <string name="InterstitialAdID">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="InterstitialAdID">ca-app-pub-4432004591406050/3356926626</string>
     <string name="itemDelete">Delete</string>
     <string name="itemUpdate">Update</string>
     <string name="socsdelete">Successfully deleted</string>

@@ -12,6 +12,9 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.rewarded.RewardedAd
+import com.yandex.metrica.YandexMetrica
+import com.yandex.metrica.YandexMetricaConfig
+import com.yandex.metrica.push.YandexMetricaPush
 
 
 class MainActivity : AppCompatActivity() ,BillingProcessor.IBillingHandler{
@@ -20,7 +23,6 @@ class MainActivity : AppCompatActivity() ,BillingProcessor.IBillingHandler{
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var mToolbar: Toolbar
     private lateinit var mInterstitialAd: InterstitialAd
-    private lateinit var rewardedAd: RewardedAd
 
 
 
@@ -45,10 +47,10 @@ class MainActivity : AppCompatActivity() ,BillingProcessor.IBillingHandler{
         mInterstitialAd.adUnitId = getString(R.string.InterstitialAdID)
         mInterstitialAd.loadAd(AdRequest.Builder().build())
 
-        //val config = YandexMetricaConfig.newConfigBuilder("37d795de-fc28-4e98-9a8c-1d5665a1f7e2").build()
-      //  YandexMetrica.activate(applicationContext, config)
-      //  YandexMetrica.enableActivityAutoTracking(application)
-      //  YandexMetricaPush.init(applicationContext);
+        val config = YandexMetricaConfig.newConfigBuilder("37d795de-fc28-4e98-9a8c-1d5665a1f7e2").build()
+        YandexMetrica.activate(applicationContext, config)
+        YandexMetrica.enableActivityAutoTracking(application)
+        YandexMetricaPush.init(applicationContext);
 
 
         }

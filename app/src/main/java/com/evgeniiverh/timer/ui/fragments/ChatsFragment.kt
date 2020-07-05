@@ -63,7 +63,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
         refreshData()
         super.onResume()
 
-        rewardedAd = RewardedAd(context, "ca-app-pub-3940256099942544/5224354917")
+        rewardedAd = RewardedAd(context, "ca-app-pub-4432004591406050/3612911641")
         val adLoadCallback = object: RewardedAdLoadCallback() {
             override fun onRewardedAdLoaded() {
 
