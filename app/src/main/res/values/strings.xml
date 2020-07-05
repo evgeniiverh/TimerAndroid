@@ -39,6 +39,7 @@
     <string name="do_sob">Before the event</string>
     <string name="proshlo">Passed</string>
     <string name="dosob">До события</string>
+    <string name="add_item">Add</string>
 
 
 </resources>

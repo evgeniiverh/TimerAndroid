@@ -33,7 +33,7 @@
                 android:backgroundTint="@color/colorPrimary"
                 android:background="@drawable/riple"
 
-                android:text="Add"
+                android:text="@string/add_item"
                 />
 
     </LinearLayout>

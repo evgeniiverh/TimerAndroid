@@ -2,14 +2,14 @@ package com.evgeniiverh.timer.adapter
 
 
 
+import android.content.ClipData.Item
 import android.content.Context
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.evgeniiverh.timer.MainActivity
 import com.evgeniiverh.timer.R
 import com.evgeniiverh.timer.asset.Person
 import kotlinx.android.synthetic.main.timer_item.view.*
@@ -18,6 +18,8 @@ import java.util.*
 
 
 class TimerAdapter(private val timerList: List<Person>, val clikListher: OnTimerItemClikListher) : RecyclerView.Adapter<TimerAdapter.TimerViewHolder>(){
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimerViewHolder {
        var itemView: View = LayoutInflater.from(parent.context).inflate(R.layout.timer_item, parent,false)
@@ -63,10 +65,9 @@ class TimerAdapter(private val timerList: List<Person>, val clikListher: OnTimer
 
 
             val itemSob = if(dateT.compareTo(dateS)<0)
-
-                context.getString(R.string.dosob)
+                itemView.context.getString(R.string.do_sob)
             else
-                "Прошло"
+                itemView.context.getString(R.string.proshlo)
 
             val dtime = if(dateT.compareTo(dateS)<0)
                 dateS.time-dateT.time
@@ -81,12 +82,12 @@ class TimerAdapter(private val timerList: List<Person>, val clikListher: OnTimer
 
             itemid.text=item.id.toString()
             itemName.text=item.name
-            item_do.text=itemSob
+            item_do.text= itemSob
             itemDateTime.text="${item.date} ${item.time}"
 
-            dni.text=dday.toString()+if(dday.toInt()%10==1 && dday.toInt()!=11)" день"
-            else if(dday.toInt()>1 && dday.toInt()<5 ||dday.toInt()%10>1 && dday.toInt()%10<5 && dday.toInt()>20 ) " дня"
-            else " дней"
+            dni.text=dday.toString()+if(dday.toInt()%10==1 && dday.toInt()!=11) itemView.context.getString(R.string.day_pre_1)
+            else if(dday.toInt()>1 && dday.toInt()<5 ||dday.toInt()%10>1 && dday.toInt()%10<5 && dday.toInt()>20 ) itemView.context.getString(R.string.day_pre_2)
+            else itemView.context.getString(R.string.day_pre_3)
 
 
             itemView.setOnClickListener{
