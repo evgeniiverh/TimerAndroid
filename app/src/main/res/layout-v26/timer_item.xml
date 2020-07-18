@@ -44,10 +44,7 @@
             android:shadowRadius="15"
             android:shadowColor="@color/colorBlack"
             android:textStyle="bold"
-            android:autoSizeTextType="uniform"
-            android:autoSizeMinTextSize="12dp"
-            android:autoSizeMaxTextSize="100dp"
-            android:autoSizeStepGranularity="2dp"
+            android:textSize="18dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

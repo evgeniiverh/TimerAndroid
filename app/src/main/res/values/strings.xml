@@ -40,7 +40,7 @@
     <string name="proshlo">Passed</string>
     <string name="dosob">Before the event</string>
     <string name="add_item">Add</string>
-
+    <string name="textget">To add an event, click the Add button</string>
 
 
 </resources>

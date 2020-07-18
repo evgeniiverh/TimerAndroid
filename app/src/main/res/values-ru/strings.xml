@@ -40,7 +40,7 @@
     <string name="proshlo">Прошло</string>
     <string name="dosob">До события</string>
     <string name="add_item">Добавить</string>
-
+    <string name="textget">Для добавления события нажмите кнопку Добавить</string>
 
 
 </resources>

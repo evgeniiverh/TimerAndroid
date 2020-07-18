@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.text.InputFilter
 import android.text.InputFilter.LengthFilter
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.NonNull
@@ -125,10 +126,16 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
     }
 
     public fun refreshData() {
+
         listPerson=db.allPerson
         recycler_view.adapter = TimerAdapter(listPerson,this)
         recycler_view.layoutManager = LinearLayoutManager(activity)
         recycler_view.setHasFixedSize(true)
+        if (listPerson.size==0){
+
+            textEduc.setVisibility(View.VISIBLE)
+        }
+        else textEduc.setVisibility(View.GONE)
     }
 
     private fun deletData(pos:Int){
