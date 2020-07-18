@@ -38,12 +38,16 @@
             android:layout_marginTop="35dp"
             android:text="Наименование"
             android:textColor="@color/colorPrimary"
-            android:textSize="18dp"
+          
             android:shadowDx="5"
             android:shadowDy="5"
             android:shadowRadius="15"
             android:shadowColor="@color/colorBlack"
             android:textStyle="bold"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="12dp"
+            android:autoSizeMaxTextSize="100dp"
+            android:autoSizeStepGranularity="2dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -80,8 +84,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
         android:id="@+id/itemData"

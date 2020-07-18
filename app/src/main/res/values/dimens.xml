@@ -2,7 +2,7 @@
 <resources>
 
     <dimen name="horizontal_margin">16dp</dimen>
-    <dimen name="normalText">16sp</dimen>
+    <dimen name="normalText">16dp</dimen>
     <dimen name="vertical_large_margin">16dp</dimen>
     <!--settings fragment-->
 

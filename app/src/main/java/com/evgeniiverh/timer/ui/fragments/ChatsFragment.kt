@@ -261,37 +261,10 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
         val name = EditText(context)
 
         val FilterArray = arrayOfNulls<InputFilter>(1)
-        FilterArray[0] = LengthFilter(10)
+        FilterArray[0] = LengthFilter(12)
         name.setFilters(FilterArray)
 
-        val alert = AlertDialog.Builder(context as MainActivity)
-            alert.setTitle(getString(R.string.inputName))
-                .setView(name)
-                .setPositiveButton(getString(R.string.create),DialogInterface.OnClickListener{ view, i->
-                    val dd=if (d<10)"0"+d.toString()
-                    else d.toString()
-                    val mm=if (m<10)"0"+m.toString()
-                    else m.toString()
 
-                    val hh=if (h<10)"0"+h.toString()
-                    else h.toString()
-                    val mmin=if (min<10)"0"+min.toString()
-                    else min.toString()
-
-
-                    val personitem = Person(
-                        0,
-                        "${name.text}",
-                        "$dd.$mm.$y",
-                        "$hh:$mmin"
-                    )
-                    db.addPerson(personitem)
-                    refreshData()
-                })
-                .setNegativeButton(getString(R.string.cancel),DialogInterface.OnClickListener{ view, i->
-                    view.cancel()
-                })
-        alert.create()
 
 
 
@@ -299,9 +272,29 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
         val tpd = TimePickerDialog(context as MainActivity, android.R.style.Theme_Holo_Dialog, TimePickerDialog.OnTimeSetListener{view, hourOfDay, minute->
             h=hourOfDay
             min=minute
-            alert.show()
+            val dd=if (d<10)"0"+d.toString()
+            else d.toString()
+            val mm=if (m<10)"0"+m.toString()
+            else m.toString()
+
+            val hh=if (h<10)"0"+h.toString()
+            else h.toString()
+            val mmin=if (min<10)"0"+min.toString()
+            else min.toString()
+
+
+            val personitem = Person(
+                0,
+                "${name.text}",
+                "$dd.$mm.$y",
+                "$hh:$mmin"
+            )
+            db.addPerson(personitem)
+            refreshData()
+
 
         },hours,minutes,true)
+
 
         val dpd = DatePickerDialog(context as MainActivity,android.R.style.Theme_Holo_Dialog, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
             y=year
@@ -311,10 +304,26 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats) , OnTimerItemClikLis
             tpd.setMessage(getString(R.string.selectTime))
             tpd.show()
 
+
         }, year, month, day)
-        dpd.setTitle(getString(R.string.selectDate))
-        dpd.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dpd.show()
+        val alert = AlertDialog.Builder(context as MainActivity)
+        alert.setTitle(getString(R.string.inputName))
+            .setView(name)
+            .setPositiveButton(getString(R.string.create),DialogInterface.OnClickListener{ view, i->
+
+
+                dpd.setTitle(getString(R.string.selectDate))
+                dpd.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                dpd.show()
+
+
+            })
+            .setNegativeButton(getString(R.string.cancel),DialogInterface.OnClickListener{ view, i->
+                view.cancel()
+            })
+        alert.create()
+        alert.show()
+
     }
 
 
