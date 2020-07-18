@@ -33,7 +33,7 @@
     <string name="selectDate">Choose event date</string>
     <string name="error">Error, try again later</string>
     <string name="payFull">Buy the full version</string>
-    <string name="inputName">Enter name</string>
+    <string name="inputName">Name</string>
     <string name="create">OK</string>
     <string name="cancel">Cancel</string>
     <string name="do_sob">Before the event</string>

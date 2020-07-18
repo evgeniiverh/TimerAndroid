@@ -33,7 +33,7 @@
     <string name="selectDate">Выберите дату события</string>
     <string name="error">Ошибка, попрубуйте позже</string>
     <string name="payFull">Купите полную версию</string>
-    <string name="inputName">Введите наименование</string>
+    <string name="inputName">Название события</string>
     <string name="create">Ок</string>
     <string name="cancel">Отмена</string>
     <string name="do_sob">До события</string>
