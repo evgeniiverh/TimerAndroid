@@ -3,7 +3,12 @@ package com.evgeniiverh.timer.ui.fragments
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
+import android.view.View
+import android.widget.LinearLayout
+import android.widget.Toast
 import com.evgeniiverh.timer.R
+import com.evgeniiverh.timer.ui.fragments.detail.detail_god
 import com.evgeniiverh.timer.ui.objects.Strong
 import kotlinx.android.synthetic.main.fragment_timer_detail.*
 import java.text.SimpleDateFormat
@@ -32,13 +37,19 @@ class Timer_detail :BaseFragment(R.layout.fragment_timer_detail) {
         dataDetailItem.text = Strong.Date
         timeDetailItem.text = Strong.Time
 
+
+        val layout1 = detailLoyat
+        layout1.setOnClickListener{
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.dataContainer,
+                    detail_god()
+                )?.commit()
+        }
+
     }
 
+
     fun minusOneSecond() {
-
-
-
-
 
         val itemSob = if(dateT!! < dateS)
             getString(R.string.do_sob)
@@ -130,3 +141,4 @@ class Timer_detail :BaseFragment(R.layout.fragment_timer_detail) {
     }
 
 }
+

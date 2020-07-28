@@ -47,9 +47,9 @@ class MainActivity : AppCompatActivity() ,BillingProcessor.IBillingHandler{
         mInterstitialAd.adUnitId = getString(R.string.InterstitialAdID)
         mInterstitialAd.loadAd(AdRequest.Builder().build())
 
-       // val config = YandexMetricaConfig.newConfigBuilder("37d795de-fc28-4e98-9a8c-1d5665a1f7e2").build()
-       // YandexMetrica.activate(applicationContext, config)
-       // YandexMetrica.enableActivityAutoTracking(application)
+        //val config = YandexMetricaConfig.newConfigBuilder("37d795de-fc28-4e98-9a8c-1d5665a1f7e2").build()
+        //YandexMetrica.activate(applicationContext, config)
+       //YandexMetrica.enableActivityAutoTracking(application)
        // YandexMetricaPush.init(applicationContext);
 
 
