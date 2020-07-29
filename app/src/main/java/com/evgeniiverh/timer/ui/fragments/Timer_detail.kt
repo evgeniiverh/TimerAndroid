@@ -12,6 +12,7 @@ import com.evgeniiverh.timer.ui.fragments.detail.detail_god
 import com.evgeniiverh.timer.ui.objects.Strong
 import kotlinx.android.synthetic.main.fragment_timer_detail.*
 import java.text.SimpleDateFormat
+import java.time.Period
 import java.util.*
 
 
@@ -27,6 +28,7 @@ class Timer_detail :BaseFragment(R.layout.fragment_timer_detail) {
     private val minutes = c.get(Calendar.MINUTE)
 
     private val sdf = SimpleDateFormat("dd.MM.yyyy HH:mm")
+    private val sdf1 = SimpleDateFormat("dd.MM.yyyy HH:mm:ss")
     private val dateS = sdf.parse("${Strong.Date} ${Strong.Time}")
     private val dateT = sdf.parse("$day.$month.$year $hours:$minutes")
 
@@ -56,18 +58,25 @@ class Timer_detail :BaseFragment(R.layout.fragment_timer_detail) {
         else
             getString(R.string.proshlo)
 
-         val dtime = if(dateT < dateS)
+         var dtime = if(dateT < dateS)
             dateS!!.time-dateT.time
         else
             dateT.time-dateS!!.time
 
 
+
+        sdf1.format(Date(dtime))
+
         val dyear = dtime/(31536000000)
+        dtime %= (31536000000)
         val dmount = dtime/(2592000000)
-        val dnedel = dtime/(86400000*7)
+        dtime %= (2592000000)
         val dday = dtime/86400000
+        dtime %= (86400000)
         val dhour = dtime/3600000
+        dtime %= (3600000)
         val dminute = dtime/60000
+        dtime %= (60000)
         val dsecond = dtime/1000
 
         deskDetailItem.text=itemSob
@@ -86,12 +95,6 @@ class Timer_detail :BaseFragment(R.layout.fragment_timer_detail) {
 
         monthDetailItem.text=itemMounts
 
-        val  itemNedely=dnedel.toString()+if(dnedel.toInt()%10==1 && dmount.toInt()!=11)getString(R.string.nedely_pre_1)
-        else if(dnedel.toInt() in 2..4 || dnedel.toInt()%10 in 2..4 && dnedel.toInt()>20) getString(
-                    R.string.nedely_pre_2)
-        else getString(R.string.nedely_pre_3)
-
-        weekDetailItem.text=itemNedely
 
         val  itemDayD=dday.toString()+if(dday.toInt()%10==1 && dday.toInt()!=11)getString(R.string.day_pre_1)
         else if(dday.toInt() in 2..4 || dday.toInt()%10 in 2..4 && dday.toInt()>20 ) getString(R.string.day_pre_2)
